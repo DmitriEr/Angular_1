@@ -1,0 +1,38 @@
+<div class="card">
+  <h4 [ngStyle]="{
+    color: card.title.length > 7 ? 'red' : 'green',
+    fontWeight: card.title.length > 7 ? '900' : '500'
+  }">{{ index }}{{ card.title }}</h4>
+
+  <!-- <p
+    class="text"
+    [ngClass]="{
+      blue: textColor === 'blue',
+      green: textColor === 'green',
+      red: textColor === 'red'
+      }"
+  >
+    {{ text }}
+  </p> -->
+
+  <p
+    class="text"
+    [class.blue]="textColor === 'blue'"
+    [class.green]="textColor === 'green'"
+    [class.red]="textColor === 'red'"
+  >
+    {{ card.text }}
+  </p>
+
+  <div>
+    <button (click)="textColor = 'blue'">Set blue</button>
+    <button (click)="textColor = 'red'">Set red</button>
+    <button (click)="textColor = 'green'">Set green</button>
+  </div>
+
+  <p>{{ cardDate | date: 'dd.MM.yyyy HH:mm:ss' }}</p>
+
+  <div>
+    <input type="text" [(ngModel)]="title" (ngModelChange)="changeHandler()" />
+  </div>
+</div>
